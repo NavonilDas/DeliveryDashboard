@@ -169,3 +169,13 @@ header .dropdown:hover {
 .status-row .content .date {
   margin-right: 20px;
 }
+
+/******************* Content Component *******************/
+.cards-bar{
+  margin: 35px 0 35px 0;
+  display: flex; 
+}
+.cards-bar > div{
+  display: flex;
+  margin: auto;
+}

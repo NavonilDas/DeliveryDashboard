@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Card from './Card';
 
 class Content extends React.Component {
     constructor(props) {
@@ -40,9 +41,11 @@ class Content extends React.Component {
                 'Authorization': 'Bearer tTU3gFVUdP'
             }
         };
-        let url = 'https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/mayank';
-        // Send a Post Request.
-        axios.post(url, data, congif)
+        // let url = 'https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/mayank';
+        // // Send a Post Request.
+        // axios.post(url, data, congif)
+        let url = './demo.json'; // TODO: For Testing
+        axios.get(url)
             .then((res) => {
                 // Check if we have received data.
                 if (res?.data?.data) {
@@ -59,7 +62,7 @@ class Content extends React.Component {
                             tmp[ele.current_status_code] = [ele];
                         }
                     }
-                    
+
                     // Update States.
                     this.setState({ all: data, categorized: tmp, cats: cats });
                 }
@@ -71,6 +74,19 @@ class Content extends React.Component {
     render() {
         return (
             <div className="site-content">
+
+                {/* Cards Bar */}
+                <div className="cards-bar">
+                    <div>
+                        {this.state.cats.map((ele, ind) => (
+                            <Card name={ele} value={this.state.categorized[ele].length} key={ind} active={ele === this.state.selected} onClick={() => {
+                                this.setState({ selected: ele });
+                            }} />
+                        ))}
+                    </div>
+                </div>
+
+
             </div>
         );
     }
