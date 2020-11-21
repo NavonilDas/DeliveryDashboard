@@ -196,6 +196,11 @@ header .dropdown:hover {
   display: flex;
 }
 
+.table-head i{
+  margin-left: 8px;
+  color: #2e5bff;
+}
+
 .table-head > div {
   flex: 1;
   color: #bfc5d2;
@@ -238,3 +243,26 @@ header .dropdown:hover {
   background-color: #2e5bff;
   border: 1px solid #2e5bff;
 }
+
+/* Table Body */
+.table-content .row {
+  border: 1px solid #eff2ff;
+  border-right: none;
+  font-family: "Rubik", sans-serif;
+  color: #2e384d;
+  padding: 20px;
+  display: flex;
+  margin: 10px;
+  cursor: pointer;
+}
+.table-content .row:hover{
+  background: #e6ecff;
+}
+.table-content .row > div {
+  flex: 1;
+  padding-right: 10px;
+}
+.table-content .row .status {
+  color: #33ac2e;
+}
+

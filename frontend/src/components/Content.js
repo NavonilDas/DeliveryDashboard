@@ -52,6 +52,9 @@ class Content extends React.Component {
                 if (res?.data?.data) {
                     let data = res.data.data;
                     let tmp = {}, cats = [];
+
+                    // Sort Data Based on AWB Number
+                    data = data.sort((a, b) => (+a.awbno) - (+b.awbno));
                     // Split the data array on the basis of categories.
                     for (var ele of data) {
                         if (ele.current_status_code in tmp) {
@@ -97,7 +100,7 @@ class Content extends React.Component {
 
                         {/* Table Head */}
                         <div className="table-head">
-                            <div>AWB Number <i className="fa fa-angle-down" style={{ color: "#2e5bff", marginLeft: "10px" }} /></div>
+                            <div>AWB Number <i className="fa fa-angle-down" /></div>
                             <div>Transporter</div>
                             <div>Source</div>
                             <div>Destination</div>
@@ -109,6 +112,30 @@ class Content extends React.Component {
 
                         {/* Table Body */}
                         <div className="table-content">
+
+                            {(this.state.categorized[this.state.selected]).map((val, ind) => (
+                                <div className="row" key={ind} onClick={() => {
+                                    let scan = (val.scan) ? val.scan : [];
+                                    // TODO: Check if Data is not sorted based on date.
+                                    // scan = scan.sort((a,b)=>{
+                                    //     return (new Date(a)) - (new Date(b));
+                                    // });
+                                    this.setState({ scan: [] });
+                                    setTimeout(() => {
+                                        this.setState({ scan: scan })
+                                    }, 700);
+                                }}>
+                                    <div>#{val.awbno}</div>
+                                    <div>{val.carrier}</div>
+                                    <div>{val.from}</div>
+                                    <div>{val.to}</div>
+                                    <div>USPA</div>
+                                    <div>{this.parseDate(val.pickup_date)}</div>
+                                    <div>{this.parseDate(val.time)}</div>
+                                    <div className="status">{val.current_status}</div>
+                                </div>
+                            ))}
+
                         </div>
 
                     </div>
