@@ -8,8 +8,14 @@
 header {
   height: 90px;
   width: 100%;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.12);
   display: flex;
+}
+
+header h1 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: auto;
 }
 
 header > ul {
@@ -24,15 +30,29 @@ header > ul li {
   height: 100%;
   padding: 35px 20px 35px 20px;
 }
+
 header > ul li a {
   text-decoration: none;
   color: #000;
   font-size: 1.1em;
   font-weight: 600;
 }
-header > ul li:hover {
+
+header > ul li:hover,
+header > ul li.active {
   background: #f8faff;
 }
+
+header .dropdown {
+  display: flex;
+  cursor: pointer;
+  padding-left: 8px;
+}
+
+header .dropdown:hover {
+  background: #f8faff;
+}
+
 .profile-img {
   margin-top: auto;
   margin-bottom: auto;
@@ -42,9 +62,11 @@ header > ul li:hover {
   background-color: #c0c3c9;
   display: flex;
 }
+
 .profile-img img {
   margin: auto auto;
 }
+
 .down-arrow {
   margin: auto 30px auto 20px;
 }
