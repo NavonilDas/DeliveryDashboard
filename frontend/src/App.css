@@ -85,6 +85,8 @@ header .dropdown:hover {
   border-radius: 10px;
   font-weight: 300;
   font-size: 1.2em;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .card.active {
