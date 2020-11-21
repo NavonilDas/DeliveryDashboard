@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
+import ShipmentInfo from './ShipmentInfo';
 
 class Content extends React.Component {
     constructor(props) {
@@ -84,6 +85,34 @@ class Content extends React.Component {
                             }} />
                         ))}
                     </div>
+                </div>
+
+                {/* Table and Shipment Info */}
+                <div style={{ display: 'flex' }}>
+
+                    <ShipmentInfo scan={this.state.scan} />
+
+                    {/* Table */}
+                    <div className="table-out">
+
+                        {/* Table Head */}
+                        <div className="table-head">
+                            <div>AWB Number <i className="fa fa-angle-down" style={{ color: "#2e5bff", marginLeft: "10px" }} /></div>
+                            <div>Transporter</div>
+                            <div>Source</div>
+                            <div>Destination</div>
+                            <div>Brand</div>
+                            <div>Start Date</div>
+                            <div>ETD</div>
+                            <div>Status</div>
+                        </div>
+
+                        {/* Table Body */}
+                        <div className="table-content">
+                        </div>
+
+                    </div>
+
                 </div>
 
 

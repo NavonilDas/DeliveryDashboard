@@ -171,11 +171,38 @@ header .dropdown:hover {
 }
 
 /******************* Content Component *******************/
-.cards-bar{
+/* Cards Bar */
+.cards-bar {
   margin: 35px 0 35px 0;
-  display: flex; 
+  display: flex;
 }
-.cards-bar > div{
+
+.cards-bar > div {
   display: flex;
   margin: auto;
+}
+
+/* Table */
+.table-out {
+  border: 1px solid #d5deff;
+  flex: 1;
+  height: fit-content;
+}
+/* Table Head */
+.table-head {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  width: calc(100% - 60px);
+  display: flex;
+}
+
+.table-head > div {
+  flex: 1;
+  color: #bfc5d2;
+  text-transform: uppercase;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  text-align: left;
+  font-size: 0.7em;
+  margin-left: 30px;
 }
