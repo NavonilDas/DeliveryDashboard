@@ -5,72 +5,6 @@
   margin: 0;
 }
 
-header {
-  height: 90px;
-  width: 100%;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.12);
-  display: flex;
-}
-
-header h1 {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin: auto;
-}
-
-header > ul {
-  list-style: none;
-  margin: 0;
-  height: 100%;
-  padding-top: 33px;
-}
-
-header > ul li {
-  display: inline;
-  height: 100%;
-  padding: 35px 20px 35px 20px;
-}
-
-header > ul li a {
-  text-decoration: none;
-  color: #000;
-  font-size: 1.1em;
-  font-weight: 600;
-}
-
-header > ul li:hover,
-header > ul li.active {
-  background: #f8faff;
-}
-
-header .dropdown {
-  display: flex;
-  cursor: pointer;
-  padding-left: 8px;
-}
-
-header .dropdown:hover {
-  background: #f8faff;
-}
-
-.profile-img {
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 45px;
-  height: 45px;
-  border-radius: 25px;
-  background-color: #c0c3c9;
-  display: flex;
-}
-
-.profile-img img {
-  margin: auto auto;
-}
-
-.down-arrow {
-  margin: auto 30px auto 20px;
-}
-
 /******************* Shipment Info Component *******************/
 .more-info {
   padding: 15px 8px 15px 8px;
@@ -242,4 +176,3 @@ header .dropdown:hover {
 .table-content .row .status {
   color: #33ac2e;
 }
-
