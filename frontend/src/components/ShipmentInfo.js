@@ -28,7 +28,35 @@ class ShipmentInfo extends React.Component {
 
     render() {
         return (
-            <div></div>
+            <div className={(this.props.scan.length === 0) ? '' : "more-info"} style={{ minWidth: "400px" }}>
+                {(this.props.scan.length === 0) ? '' : (
+                    <div style={{ position: "relative", overflow: "hidden" }}>
+                        <div className="c-btn">
+                            <img src="./imgs/destination.svg" alt="Destination" style={{ paddingLeft: "10px" }} />
+                        </div>
+
+                        <div className="dot-line"></div>
+                        {
+                            this.props.scan.map((ele, ind) => (
+                                <div className="status-row" key={ind}>
+                                    <div className="dot"></div>
+                                    <hr></hr>
+                                    <div className={`content ${ind === 0 ? 'active' : ''}`}>
+                                        <span className="status">{ele.status_detail}</span>
+                                        <span className="date">{this.parseDashedDate(ele.time)}</span>
+                                        <span className="time">{this.parseTime(ele.time)}</span>
+                                    </div>
+                                </div>
+
+                            ))
+                        }
+
+                        <div className="c-btn">
+                            <img src="./imgs/warehouse.svg" alt="warehouse" />
+                        </div>
+                    </div>
+                )}
+            </div>
         );
     }
 }

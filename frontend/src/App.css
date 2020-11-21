@@ -93,3 +93,79 @@ header .dropdown:hover {
   background: #2e5bff;
   color: #fff;
 }
+
+/******************* Shipment Info Component *******************/
+.more-info {
+  padding: 15px 8px 15px 8px;
+  margin: 30px;
+  border: 1px solid #d5deff;
+  height: fit-content;
+}
+/* Circular Button */
+.c-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  background: #d5deff;
+  display: flex;
+}
+
+.c-btn img {
+  margin: auto auto;
+}
+
+/* Dotted Line */
+.dot-line {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%232f61d5' stroke-width='4' stroke-dasharray='10%2c20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  z-index: -2;
+  left: 25px;
+}
+
+.status-row {
+  margin-top: 20px;
+  display: flex;
+  margin-left: 14px;
+}
+
+/* Blue Dot */
+.status-row .dot {
+  width: 15px;
+  height: 15px;
+  margin: auto 0 auto 0;
+  border-radius: 30px;
+  background: #3fb6dc;
+  border: 5px solid rgba(63, 182, 220, 0.5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+/* Blue Vertical Line */
+.status-row hr {
+  height: 1px;
+  width: 30px;
+  margin: auto 2px auto 2px;
+  background: #3fb6dc;
+  border: none;
+}
+/* Status, Date and Time */
+.status-row .content {
+  display: flex;
+  padding: 12px;
+  border: 1px solid #e6ecff;
+  color: #69707f;
+  width: 300px;
+  font-size: 0.7em;
+}
+.status-row .content.active {
+  background: #e6ecff;
+  color: #33ac2e;
+}
+.status-row .content .status {
+  flex: 1;
+}
+.status-row .content .date {
+  margin-right: 20px;
+}
