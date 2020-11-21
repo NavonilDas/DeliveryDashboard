@@ -9,14 +9,14 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            all: [], // Complete Data Array.
             categorized: {
                 DEL: []
             },
             cats: [], // Categories.
             selected: "DEL", // Current Selected Category.
             scan: [], // Shipment Info array.
-            down_arrow: true
+            down_arrow: true,
+            loading: true
         };
     }
 
@@ -58,7 +58,7 @@ class Content extends React.Component {
                     }
                     cats = cats.sort();
                     // Update States.
-                    this.setState({ all: data, categorized: tmp, cats: cats });
+                    this.setState({ categorized: tmp, cats: cats, loading: false });
                 }
 
             })
@@ -72,6 +72,7 @@ class Content extends React.Component {
                 {/* Cards Bar */}
                 <div className="cards-bar">
                     <div>
+                        <img src="./imgs/Loading.svg" alt="Loading SVG" style={{ display: (this.state.loading ? 'block' : 'none') }} />
                         {this.state.cats.map((ele, ind) => (
                             <Card
                                 name={ele}

@@ -2,9 +2,6 @@ import './Table.css';
 import React from 'react';
 
 class Table extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     /**
      * Function to parse DateTime String into format dd/mm/yyyy.
@@ -18,7 +15,6 @@ class Table extends React.Component {
     }
 
     render() {
-        {/* Table */ }
         return (
             <div className="table-out">
 
