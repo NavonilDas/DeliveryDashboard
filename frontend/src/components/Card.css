@@ -1,0 +1,22 @@
+/* Card Component */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Rubik", sans-serif;
+  width: 100px;
+  height: 90px;
+  background: #d5deff;
+  color: #2e5bff;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 300;
+  font-size: 1.2em;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.card.active {
+  background: #2e5bff;
+  color: #fff;
+}

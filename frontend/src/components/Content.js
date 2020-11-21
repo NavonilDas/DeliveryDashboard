@@ -43,11 +43,9 @@ class Content extends React.Component {
                 'Authorization': 'Bearer tTU3gFVUdP'
             }
         };
-        // let url = 'https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/mayank';
-        // // Send a Post Request.
-        // axios.post(url, data, congif)
-        let url = './demo.json'; // TODO: For Testing
-        axios.get(url)
+        let url = 'https://93870v1pgk.execute-api.ap-south-1.amazonaws.com/latest/shipments/mayank';
+        // Send a Post Request.
+        axios.post(url, data, congif)
             .then((res) => {
                 // Check if we have received data.
                 if (res?.data?.data) {
@@ -84,9 +82,18 @@ class Content extends React.Component {
                 <div className="cards-bar">
                     <div>
                         {this.state.cats.map((ele, ind) => (
-                            <Card name={ele} value={this.state.categorized[ele].length} key={ind} active={ele === this.state.selected} onClick={() => {
-                                this.setState({ selected: ele });
-                            }} />
+                            <Card
+                                name={ele}
+                                value={this.state.categorized[ele].length}
+                                key={ind}
+                                active={ele === this.state.selected}
+                                onClick={() => {
+                                    this.setState({
+                                        scan: [], // Hide Already Visible Shipment info.
+                                        selected: ele // Select The Current Category.
+                                    });
+                                }}
+                            />
                         ))}
                     </div>
                 </div>
@@ -131,9 +138,12 @@ class Content extends React.Component {
                                     //     return (new Date(a)) - (new Date(b));
                                     // });
                                     this.setState({ scan: [] });
+
+                                    // Set Timeout is used just to notify user that the values are update.
                                     setTimeout(() => {
                                         this.setState({ scan: scan })
                                     }, 700);
+
                                 }}>
                                     <div>#{val.awbno}</div>
                                     <div>{val.carrier}</div>

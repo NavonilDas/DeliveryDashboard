@@ -71,29 +71,6 @@ header .dropdown:hover {
   margin: auto 30px auto 20px;
 }
 
-/* Card Component */
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-family: "Rubik", sans-serif;
-  width: 100px;
-  height: 90px;
-  background: #d5deff;
-  color: #2e5bff;
-  padding: 8px;
-  border-radius: 10px;
-  font-weight: 300;
-  font-size: 1.2em;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.card.active {
-  background: #2e5bff;
-  color: #fff;
-}
-
 /******************* Shipment Info Component *******************/
 .more-info {
   padding: 15px 8px 15px 8px;
@@ -214,7 +191,7 @@ header .dropdown:hover {
 
 /* Table Body Scrollbar */
 .table-content {
-  max-height: 380px;
+  height: 380px;
   overflow-y: scroll;
 }
 .table-content::-webkit-scrollbar {
