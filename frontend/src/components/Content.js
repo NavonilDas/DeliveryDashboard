@@ -1,7 +1,9 @@
+import './Content.css';
 import React from 'react';
 import axios from 'axios';
 import Card from './Card';
 import ShipmentInfo from './ShipmentInfo';
+import Table from './Table';
 
 class Content extends React.Component {
     constructor(props) {
@@ -16,17 +18,6 @@ class Content extends React.Component {
             scan: [], // Shipment Info array.
             down_arrow: true
         };
-    }
-
-    /**
-     * Function to parse DateTime String into format dd/mm/yyyy.
-     * @param {string} date DateTime
-     */
-    parseDate(date) {
-        let out = new Date(date);
-        let day = out.getDate();
-        let mon = out.getMonth();
-        return `${day < 10 ? '0' : ''}${day}/${mon < 10 ? '0' : ''}${mon}/${out.getFullYear()}`;
     }
 
     /**
@@ -103,62 +94,35 @@ class Content extends React.Component {
 
                     <ShipmentInfo scan={this.state.scan} />
 
-                    {/* Table */}
-                    <div className="table-out">
+                    <Table
+                        downArrow={this.state.down_arrow}
+                        data={this.state.categorized[this.state.selected]}
+                        fiterAWB={() => {
+                            // Copy The Category.
+                            let categorized = this.state.categorized;
+                            // Reverse The Original Array.
+                            categorized[this.state.selected] = categorized[this.state.selected].reverse();
+                            // Change the State.
+                            this.setState({
+                                down_arrow: !this.state.down_arrow,
+                                categorized: categorized
+                            });
+                        }}
+                        rowClick={(item) => {
+                            let scan = (item) ? item : [];
+                            // TODO: Check if Data is not sorted based on date.
+                            // scan = scan.sort((a,b)=>{
+                            //     return (new Date(a)) - (new Date(b));
+                            // });
+                            this.setState({ scan: [] });
 
-                        {/* Table Head */}
-                        <div className="table-head">
-                            <div
-                                style={{ cursor: "pointer" }}
-                                onClick={() => {
-                                    let categorized = this.state.categorized;
-                                    categorized[this.state.selected] = categorized[this.state.selected].reverse();
-                                    this.setState({
-                                        down_arrow: !this.state.down_arrow,
-                                        categorized: categorized
-                                    });
-                                }}>AWB Number <i className={`fa ${this.state.down_arrow ? 'fa-angle-down' : 'fa-angle-up'}`} /></div>
-                            <div>Transporter</div>
-                            <div>Source</div>
-                            <div>Destination</div>
-                            <div>Brand</div>
-                            <div>Start Date</div>
-                            <div>ETD</div>
-                            <div>Status</div>
-                        </div>
+                            // Set Timeout is used just to notify user that the values are update.
+                            setTimeout(() => {
+                                this.setState({ scan: scan })
+                            }, 700);
 
-                        {/* Table Body */}
-                        <div className="table-content">
-
-                            {(this.state.categorized[this.state.selected]).map((val, ind) => (
-                                <div className="row" key={ind} onClick={() => {
-                                    let scan = (val.scan) ? val.scan : [];
-                                    // TODO: Check if Data is not sorted based on date.
-                                    // scan = scan.sort((a,b)=>{
-                                    //     return (new Date(a)) - (new Date(b));
-                                    // });
-                                    this.setState({ scan: [] });
-
-                                    // Set Timeout is used just to notify user that the values are update.
-                                    setTimeout(() => {
-                                        this.setState({ scan: scan })
-                                    }, 700);
-
-                                }}>
-                                    <div>#{val.awbno}</div>
-                                    <div>{val.carrier}</div>
-                                    <div>{val.from}</div>
-                                    <div>{val.to}</div>
-                                    <div>USPA</div>
-                                    <div>{this.parseDate(val.pickup_date)}</div>
-                                    <div>{this.parseDate(val.time)}</div>
-                                    <div className="status">{val.current_status}</div>
-                                </div>
-                            ))}
-
-                        </div>
-
-                    </div>
+                        }}
+                    />
 
                 </div>
 

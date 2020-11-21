@@ -1,0 +1,11 @@
+/******************* Content Component *******************/
+/* Cards Bar */
+.cards-bar {
+  margin: 35px 0 35px 0;
+  display: flex;
+}
+
+.cards-bar > div {
+  display: flex;
+  margin: auto;
+}
