@@ -9,3 +9,13 @@
   display: flex;
   margin: auto;
 }
+
+.data-info {
+  display: flex;
+}
+
+@media only screen and (max-width: 1295px) {
+  .data-info {
+    flex-direction: column;
+  }
+}

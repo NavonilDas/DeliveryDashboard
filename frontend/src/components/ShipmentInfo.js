@@ -30,7 +30,7 @@ class ShipmentInfo extends React.Component {
 
     render() {
         return (
-            <div className={(this.props.scan.length === 0) ? '' : "more-info"} style={{ minWidth: "400px" }}>
+            <div className={(this.props.scan.length === 0) ? '' : "more-info"}>
                 {(this.props.scan.length === 0) ? '' : (
                     <div style={{ position: "relative", overflow: "hidden" }}>
                         <div className="c-btn">

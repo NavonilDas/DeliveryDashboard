@@ -30,7 +30,7 @@
 
 /* Table Body Scrollbar */
 .table-content {
-  height: 380px;
+  height: 410px;
   overflow-y: scroll;
 }
 .table-content::-webkit-scrollbar {
@@ -64,6 +64,7 @@
 .table-content .row {
   border: 1px solid #eff2ff;
   border-right: none;
+  font-size: 0.81em;
   font-family: "Rubik", sans-serif;
   color: #2e384d;
   padding: 20px;

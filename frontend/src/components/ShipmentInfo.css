@@ -23,7 +23,7 @@
   position: absolute;
   height: 100%;
   width: 2px;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%232f61d5' stroke-width='4' stroke-dasharray='10%2c20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%232f61d5' stroke-width='4' stroke-dasharray='6%2c20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
   z-index: -2;
   left: 25px;
 }
@@ -31,17 +31,17 @@
 .status-row {
   margin-top: 20px;
   display: flex;
-  margin-left: 14px;
+  margin-left: 18px;
 }
 
 /* Blue Dot */
 .status-row .dot {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   margin: auto 0 auto 0;
   border-radius: 30px;
   background: #3fb6dc;
-  border: 5px solid rgba(63, 182, 220, 0.5);
+  border: 3px solid rgba(63, 182, 220, 0.5);
   -webkit-background-clip: padding-box; /* for Safari */
   background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 }
@@ -61,7 +61,7 @@
   border: 1px solid #e6ecff;
   color: #69707f;
   width: 300px;
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 .status-row .content.active {
   background: #e6ecff;

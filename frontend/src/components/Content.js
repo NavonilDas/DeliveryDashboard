@@ -18,12 +18,50 @@ class Content extends React.Component {
             down_arrow: true,
             loading: true
         };
+
+        this.filterAWB = this.filterAWB.bind(this);
+        this.rowClick = this.rowClick.bind(this);
+    }
+
+    /**
+     * Filter rows Based on the AWB number.
+     */
+    filterAWB() {
+        // Copy The Category.
+        let categorized = this.state.categorized;
+        // Reverse The Original Array.
+        categorized[this.state.selected] = categorized[this.state.selected].reverse();
+        // Change the State.
+        this.setState({
+            down_arrow: !this.state.down_arrow,
+            categorized: categorized
+        });
+    }
+
+    /**
+     * Table row Click Listener.
+     * @param {Array} item Array of Shipment info (Scan)
+     */
+    rowClick(item) {
+        let scan = (item) ? item : [];
+        // TODO: Check if Data is not sorted based on date.
+        // scan = scan.sort((a,b)=>{
+        //     return (new Date(a)) - (new Date(b));
+        // });
+        this.setState({ scan: [] });
+
+        // Set Timeout is used just to notify user that the values are update.
+        setTimeout(() => {
+            this.setState({ scan: scan })
+        }, 700);
+
     }
 
     /**
      * https://reactjs.org/docs/react-component.html#componentdidmount
      */
     componentDidMount() {
+        // FIXME: Beared Token Should not be used like this.
         // Post Body.
         let data = {
             'email': "mayankmittal@intugine.com"
@@ -62,7 +100,11 @@ class Content extends React.Component {
                 }
 
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                // NOTE: Modals Can be Used instead of alert.
+                alert('Error With API Please Look into Console.');
+                console.log(err);
+            });
     }
 
     render() {
@@ -91,39 +133,20 @@ class Content extends React.Component {
                 </div>
 
                 {/* Table and Shipment Info */}
-                <div style={{ display: 'flex' }}>
+                <div className="data-info">
 
-                    <ShipmentInfo scan={this.state.scan} />
+                    <div style={{ minWidth: "490px" }}>
+                        <ShipmentInfo scan={this.state.scan} />
+                    </div>
 
-                    <Table
-                        downArrow={this.state.down_arrow}
-                        data={this.state.categorized[this.state.selected]}
-                        fiterAWB={() => {
-                            // Copy The Category.
-                            let categorized = this.state.categorized;
-                            // Reverse The Original Array.
-                            categorized[this.state.selected] = categorized[this.state.selected].reverse();
-                            // Change the State.
-                            this.setState({
-                                down_arrow: !this.state.down_arrow,
-                                categorized: categorized
-                            });
-                        }}
-                        rowClick={(item) => {
-                            let scan = (item) ? item : [];
-                            // TODO: Check if Data is not sorted based on date.
-                            // scan = scan.sort((a,b)=>{
-                            //     return (new Date(a)) - (new Date(b));
-                            // });
-                            this.setState({ scan: [] });
-
-                            // Set Timeout is used just to notify user that the values are update.
-                            setTimeout(() => {
-                                this.setState({ scan: scan })
-                            }, 700);
-
-                        }}
-                    />
+                    {this.state.loading ? '' : (
+                        <Table
+                            downArrow={this.state.down_arrow}
+                            data={this.state.categorized[this.state.selected]}
+                            fiterAWB={this.filterAWB}
+                            rowClick={this.rowClick}
+                        />
+                    )}
 
                 </div>
 

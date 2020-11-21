@@ -10,7 +10,7 @@ class Card extends React.Component {
         return (
             <div className={`${this.props.active ? 'active' : ''} card`} onClick={this.props.onClick}>
                 <span>{this.props.name}</span>
-                <span style={{ marginLeft: "auto", fontSize: "2.5em" }}>{this.props.value}</span>
+                <span style={{ margin: "0 8px -8px auto", fontSize: "2.5em" }}>{this.props.value}</span>
             </div>
         );
     }
