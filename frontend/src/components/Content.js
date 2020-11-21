@@ -13,7 +13,8 @@ class Content extends React.Component {
             },
             cats: [], // Categories.
             selected: "DEL", // Current Selected Category.
-            scan: [] // Shipment Info array.
+            scan: [], // Shipment Info array.
+            down_arrow: true
         };
     }
 
@@ -66,7 +67,7 @@ class Content extends React.Component {
                             tmp[ele.current_status_code] = [ele];
                         }
                     }
-
+                    cats = cats.sort();
                     // Update States.
                     this.setState({ all: data, categorized: tmp, cats: cats });
                 }
@@ -100,7 +101,16 @@ class Content extends React.Component {
 
                         {/* Table Head */}
                         <div className="table-head">
-                            <div>AWB Number <i className="fa fa-angle-down" /></div>
+                            <div
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                    let categorized = this.state.categorized;
+                                    categorized[this.state.selected] = categorized[this.state.selected].reverse();
+                                    this.setState({
+                                        down_arrow: !this.state.down_arrow,
+                                        categorized: categorized
+                                    });
+                                }}>AWB Number <i className={`fa ${this.state.down_arrow ? 'fa-angle-down' : 'fa-angle-up'}`} /></div>
                             <div>Transporter</div>
                             <div>Source</div>
                             <div>Destination</div>
