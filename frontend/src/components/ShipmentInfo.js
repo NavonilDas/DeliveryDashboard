@@ -1,4 +1,6 @@
 import React from 'react';
+import './ShipmentInfo.css';
+
 class ShipmentInfo extends React.Component {
     constructor(props) {
         super(props);
