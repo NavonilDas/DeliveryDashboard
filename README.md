@@ -15,4 +15,4 @@
 
 ## Demo
 
-![Demo](Screenshots\Demo.gif)
+![Demo](Screenshots/Demo.gif)
